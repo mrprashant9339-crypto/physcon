@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Login - Physcon Cyber Cafe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,13 +10,8 @@
   <h2>Login with Mobile OTP</h2>
 </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
 <section class="box center">
+
   <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
   <div id="recaptcha-container"></div>
   <button class="btn" onclick="sendOTP()">Send OTP</button>
@@ -27,70 +20,13 @@
 
   <input type="text" id="otp" placeholder="Enter OTP">
   <button class="btn" onclick="verifyOTP()">Verify OTP</button>
+
 </section>
 
-<footer>
-  <p>© 2025 Physcon Cyber Café</p>
-</footer>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
-<!-- 🔐 FIREBASE OTP CODE (EK HI JAGAH, EK HI FILE) -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import {
-    getAuth,
-    signInWithPhoneNumber,
-    RecaptchaVerifier
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-
-  // 🔴 TUMHARA FIREBASE CONFIG
-  const firebaseConfig = {
-    apiKey: "AIzaSyDVAJXcjhjXDUOTvCyv97a5M0N5vMOhd0g",
-    authDomain: "physcon-web.firebaseapp.com",
-    projectId: "physcon-web",
-    storageBucket: "physcon-web.firebasestorage.app",
-    messagingSenderId: "597364247516",
-    appId: "1:597364247516:web:52f3f489dc1ca092661d19"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // reCAPTCHA setup
-  window.recaptchaVerifier = new RecaptchaVerifier(
-    'recaptcha-container',
-    { size: 'normal' },
-    auth
-  );
-
-  // Send OTP
-  window.sendOTP = function () {
-    const phone = document.getElementById("phone").value;
-
-    signInWithPhoneNumber(auth, phone, window.recaptchaVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-        alert("OTP sent successfully");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
-
-  // Verify OTP
-  window.verifyOTP = function () {
-    const otp = document.getElementById("otp").value;
-
-    window.confirmationResult.confirm(otp)
-      .then(() => {
-        alert("Login successful");
-        window.location.href = "index.html";
-      })
-      .catch(() => {
-        alert("Wrong OTP");
-      });
-  };
-</script>
-
+<script src="js/auth.js"></script>
 </body>
 </html>
