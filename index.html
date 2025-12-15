@@ -1,103 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physcon Login</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; }
-        .login-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 300px; text-align: center; }
-        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
-        button:hover { background-color: #218838; }
-        #otp-group { display: none; }
-        h2 { margin-bottom: 20px; color: #333; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Physcon Cyber Cafe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="login-box">
-    <h2>Physcon Login</h2>
-    
-    <div id="phone-group">
-        <p>Login with Mobile</p>
-        <input type="text" id="phone-number" placeholder="+91 9999999999">
-        <div id="recaptcha-container"></div>
-        <button onclick="sendOTP()">Get OTP</button>
-    </div>
+<header>
+  <h1>Physcon Cyber Café</h1>
+  <p>All Online Services at One Place</p>
+</header>
 
-    <div id="otp-group">
-        <p>Enter OTP</p>
-        <input type="text" id="otp-code" placeholder="123456">
-        <button onclick="verifyOTP()">Verify & Login</button>
-    </div>
-</div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="login.html">Login</a>
+</nav>
 
-<script type="module">
-  // 1. Import Functions (Auth भी जोड़ दिया है)
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-  import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+<section class="hero">
+  <h2>Welcome to Physcon Cyber Café</h2>
+  <p>Online Form • Aadhaar • PAN • Printing • Job Apply</p>
+  <a href="contact.html" class="btn">Contact Now</a>
+</section>
 
-  // 2. Your Configuration (जो आपने दिया था)
-  const firebaseConfig = {
-    apiKey: "AIzaSyDVAJXcjhjXDUOTvCyv97a5M0N5vMOhd0g",
-    authDomain: "physcon-web.firebaseapp.com",
-    projectId: "physcon-web",
-    storageBucket: "physcon-web.firebasestorage.app",
-    messagingSenderId: "597364247516",
-    appId: "1:597364247516:web:52f3f489dc1ca092661d19",
-    measurementId: "G-QEXKT8MF7Z"
-  };
+<section class="info">
+  <h3>Why Choose Us?</h3>
+  <p>Fast service • Trusted work • Reasonable price</p>
+</section>
 
-  // 3. Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app); // Auth को चालू किया
+<footer>
+  <p>© 2025 Physcon Cyber Café</p>
+</footer>
 
-  // 4. Captcha Setup
-  window.recaptchaVerifier = null;
-  window.onload = function() {
-    window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-      'size': 'normal',
-      'callback': (response) => {
-        // reCAPTCHA solved
-      }
-    });
-    window.recaptchaVerifier.render();
-  };
-
-  // 5. Send OTP Function
-  window.sendOTP = function() {
-    const phoneNumber = document.getElementById("phone-number").value;
-    const appVerifier = window.recaptchaVerifier;
-
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-        alert("OTP sent to " + phoneNumber);
-        document.getElementById("phone-group").style.display = "none";
-        document.getElementById("otp-group").style.display = "block";
-      }).catch((error) => {
-        console.error("Error sending OTP", error);
-        alert("Error: " + error.message);
-      });
-  };
-
-  // 6. Verify OTP Function
-  window.verifyOTP = function() {
-    const code = document.getElementById("otp-code").value;
-    window.confirmationResult.confirm(code).then((result) => {
-      const user = result.user;
-      alert("Login Successful! Welcome.");
-      console.log(user);
-      // यहाँ आप उसे Home Page पर भेज सकते हैं:
-      // window.location.href = "home.html";
-    }).catch((error) => {
-      alert("Invalid OTP");
-    });
-  };
-</script>
-
+<script src="js/script.js"></script>
 </body>
 </html>
