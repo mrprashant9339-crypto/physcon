@@ -15,17 +15,27 @@
   <a href="services.html">Services</a>
 </nav>
 
-<section class="box center">
-  <p>
-    📞 Mobile: <b>9339XXXXXX</b><br><br>
+<section class="box">
+  <h3>Send Your Query</h3>
 
-    📍 Address: Your City, Bihar<br><br>
+  <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
+    
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="tel" name="phone" placeholder="Mobile Number" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
 
-    <a class="btn" href="https://wa.me/91XXXXXXXXXX" target="_blank">
-      Chat on WhatsApp
-    </a>
-  </p>
+    <!-- extra settings -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://physcon.us.kg/thankyou.html">
+
+    <button type="submit" class="btn">Send Message</button>
+  </form>
 </section>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+  💬
+</a>
 
 <footer>
   <p>© 2025 Physcon Cyber Café</p>
