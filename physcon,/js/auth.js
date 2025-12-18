@@ -1,16 +1,34 @@
-import { auth, db } from "./firebase.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword }
-from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-import { doc, setDoc }
-from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+// js/auth.js
+import { auth, googleProvider, githubProvider } from "./firebase.js";
+import { signInWithPopup } 
+  from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
-window.signup = async () => {
-  const res = await createUserWithEmailAndPassword(auth, email.value, password.value);
-  await setDoc(doc(db,"users",res.user.uid),{email:email.value,role:"user",created:new Date()});
-  alert("Signup Success"); location.href="dashboard.html";
-};
+const googleBtn = document.getElementById("googleBtn");
+const githubBtn = document.getElementById("githubBtn");
 
-window.login = async () => {
-  await signInWithEmailAndPassword(auth, email.value, password.value);
-  alert("Login Success"); location.href="dashboard.html";
-};
+if (googleBtn) {
+  googleBtn.addEventListener("click", async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      alert("Logged in as " + user.email);
+      // yahan redirect ya database save karna hai to kar sakta hai
+    } catch (err) {
+      console.error(err);
+      alert("Google login error: " + err.message);
+    }
+  });
+}
+
+if (githubBtn) {
+  githubBtn.addEventListener("click", async () => {
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+      const user = result.user;
+      alert("Logged in (GitHub): " + user.email);
+    } catch (err) {
+      console.error(err);
+      alert("GitHub login error: " + err.message);
+    }
+  });
+}
