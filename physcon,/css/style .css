@@ -1,3 +1,164 @@
-body{font-family:Arial;background:#0f172a;color:#fff;text-align:center;padding:40px}
-a{color:#38bdf8;text-decoration:none;margin:0 8px}
-input,button{padding:10px;margin:6px}
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#17171f;
+  color:#f5f5ff;
+}
+
+.wrapper{
+  width:900px;
+  height:520px;
+  display:flex;
+  border-radius:18px;
+  overflow:hidden;
+  background:#1f1f2b;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Left side with image feel */
+.left{
+  flex:1;
+  padding:24px;
+  background:linear-gradient(160deg,#2c2250,#090918);
+  position:relative;
+}
+
+.logo{
+  font-family:'Great Vibes',cursive; /* cursive BABA */
+  font-size:40px;
+  letter-spacing:2px;
+}
+
+.tagline{
+  position:absolute;
+  left:24px;
+  bottom:32px;
+  font-size:18px;
+  color:#f1eefc;
+  opacity:.9;
+}
+
+/* Right form */
+.right{
+  flex:1;
+  padding:40px 48px;
+  background:#201f30;
+}
+
+.right h2{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.small{
+  font-size:13px;
+  margin-bottom:24px;
+  color:#b9b7d9;
+}
+
+.small a{
+  color:#a88bff;
+  text-decoration:none;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+}
+
+input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #3c3758;
+  background:#26243b;
+  color:#f5f5ff;
+  font-size:13px;
+}
+
+input::placeholder{
+  color:#8581a6;
+}
+
+.check{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:#b9b7d9;
+  margin-top:4px;
+}
+
+.check input{
+  width:auto;
+}
+
+.primary-btn{
+  margin-top:6px;
+  padding:10px 0;
+  border:none;
+  border-radius:999px;
+  background:#7c5cff;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.primary-btn:hover{
+  background:#6b4ee6;
+}
+
+.or{
+  text-align:center;
+  font-size:12px;
+  margin:18px 0 10px;
+  color:#8f8bb0;
+}
+
+.social-buttons{
+  display:flex;
+  gap:10px;
+  justify-content:space-between;
+}
+
+.social-buttons button{
+  flex:1;
+  border-radius:999px;
+  border:1px solid #3c3758;
+  background:#25233a;
+  color:#f5f5ff;
+  font-size:13px;
+  padding:8px 0;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+
+.social-buttons button.google{border-color:#ea4335;}
+.social-buttons button.github{border-color:#ffffff22;}
+.social-buttons button.email{border-color:#1a73e8;}
+
+.social-buttons button:hover{
+  background:#2f2d45;
+}
