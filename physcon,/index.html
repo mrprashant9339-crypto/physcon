@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Physcon | Home</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>BABA – Create account</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Icons (Google / GitHub / Email ke liye simple logo) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<h1>Physcon 🚀</h1>
-<p>Learning • Coding • Innovation</p>
-<nav>
-  <a href="login.html">Login</a> |
-  <a href="otp.html">OTP Login</a> |
-  <a href="admin.html">Admin</a>
-</nav>
+<div class="wrapper">
+  <!-- Left image panel -->
+  <div class="left">
+    <div class="logo">BABA</div>
+    <div class="tagline">
+      Capturing Moments,<br>Creating Memories
+    </div>
+  </div>
+
+  <!-- Right form panel -->
+  <div class="right">
+    <h2>Create an account</h2>
+    <p class="small">Already have an account?
+      <a href="#">Log in</a>
+    </p>
+
+    <form>
+      <div class="row">
+        <input type="text" placeholder="First name" required>
+        <input type="text" placeholder="Last name">
+      </div>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Enter your password" required>
+
+      <label class="check">
+        <input type="checkbox" required>
+        <span>I agree to the Terms & Conditions</span>
+      </label>
+
+      <button class="primary-btn" type="submit">Create account</button>
+    </form>
+
+    <div class="or">or sign up with</div>
+
+    <div class="social-buttons">
+      <button class="google"><i class="fab fa-google"></i> Google</button>
+      <button class="github"><i class="fab fa-github"></i> GitHub</button>
+      <button class="email"><i class="fa-regular fa-envelope"></i> Email</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
